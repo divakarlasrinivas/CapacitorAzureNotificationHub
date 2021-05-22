@@ -14,3 +14,4 @@ end
 target 'PluginTests' do
   capacitor_pods
 end
+pod 'AzureNotificationHubs-iOS'

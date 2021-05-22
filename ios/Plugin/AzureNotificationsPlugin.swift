@@ -15,4 +15,25 @@ public class AzureNotificationsPlugin: CAPPlugin {
             "value": implementation.echo(value)
         ])
     }
+    
+    @objc func initialize(_ call: CAPPluginCall) {
+        
+        guard let notificationHubName = call.options["notificationHubName"] as? String else {
+            call.reject("Must provide notificationHubName")
+            return
+          }
+        guard let connectionString = call.options["connectionString"] as? String else {
+            call.reject("Must provide connectionString")
+            return
+          }
+        
+        guard let deviceTag = call.options["deviceTag"] as? String else {
+            call.reject("Must provide connectionString")
+            return
+          }
+
+        call.resolve([
+            "value": implementation.initialize(notificationHubName, connectionString, deviceTag)
+        ])
+    }
 }
